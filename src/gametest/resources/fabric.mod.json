@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "seamlessspace_test",
+  "version": "1.0.0",
+  "name": "Seamless Space server verification",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-gametest": ["dev.seamlessspace.gametest.PlanetWorldGameTests"],
+    "fabric-client-gametest": ["dev.seamlessspace.gametest.PlanetClientGameTest"]
+  },
+  "depends": {
+    "seamlessspace": "*",
+    "fabric-gametest-api-v1": "*"
+  }
+}

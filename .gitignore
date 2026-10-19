@@ -1,0 +1,25 @@
+.gradle/
+.gradle-home/
+build/
+run/
+.idea/
+*.iml
+.DS_Store
+__pycache__/
+*.py[cod]
+.vscode/
+.codex/
+.agents/
+.aws/
+.env
+.env.*
+!.env.example
+
+# Publish only the current distribution.
+dist/*
+!dist/README.md
+!dist/INSTALL-RU.txt
+!dist/BUILD-INFO.json
+!dist/LICENSE-fabric-api.txt
+!dist/seamless-space-0.12.1.jar
+!dist/seamless-space-0.12.1-mc26.3.zip

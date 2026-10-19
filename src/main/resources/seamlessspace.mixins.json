@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "dev.seamlessspace.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "MinecraftServerAccessor",
+    "MinecraftServerLevelsMixin",
+    "PlanetGravityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

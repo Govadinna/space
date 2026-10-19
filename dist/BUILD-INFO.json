@@ -1,0 +1,24 @@
+{
+  "version": "0.12.1",
+  "minecraft": "26.3",
+  "fabric_api": "0.163.0+26.3",
+  "unit_tests": 55,
+  "server_tests": 15,
+  "client_test": "Held Space crosses 2000; remains creative/Overworld; subsequent forward/strafe moves >100m; D has positive displacement along camera-right. No screenshots.",
+  "flight": "Same native creative player/dimension. Orbital movement uses vanilla processed input, independent of native position deltas and missing chunks. A/D sign corrected. Native speed capped separately from orbital speed.",
+  "rendering": "LOD becomes spherical with altitude. Earth near voxel patch dither-fades between 400 and 1200; orbital globe alone above 1200. Removes floating planar patch, not all cube-atlas content seams.",
+  "limitations": [
+    "Separate planetary dimensions remain; full seamless landing not claimed.",
+    "Earth cube atlas content boundaries remain.",
+    "Unvisited/detail maps refine asynchronously. No guaranteed FPS or instant chunk generation.",
+    "Create ship dimension transfers unimplemented.",
+    "Saved terrain generators and builds unchanged."
+  ],
+  "screenshots": 0,
+  "sha256": {
+    "seamless-space-0.12.1.jar": "17efdd6c1993eefd02ee98ba9638868cbe8b0bc162b214b4e9a820f9ce2e0076"
+  },
+  "logs": [
+    "build/release-0.12.1.log"
+  ]
+}

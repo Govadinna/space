@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "seamlessspace",
+  "version": "${version}",
+  "name": "Seamless Space",
+  "description": "Procedural space flight, streamed voxel surfaces, saved-building orbital LOD and telescope optics.",
+  "authors": ["Seamless Space contributors"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["dev.seamlessspace.SeamlessSpace"],
+    "client": ["dev.seamlessspace.client.SeamlessSpaceClient"]
+  },
+  "mixins": ["seamlessspace.mixins.json", "seamlessspace.client.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": ">=0.163.0"
+  }
+}

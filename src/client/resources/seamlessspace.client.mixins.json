@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "dev.seamlessspace.client.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "SpaceMouseMixin",
+    "SpaceHandMixin",
+    "SpaceTravelOverlayMixin",
+    "SpaceSurfaceSkyMixin",
+    "SpaceZoomMixin",
+    "SpaceTelescopeWheelMixin",
+    "SpaceFogMixin",
+    "SpaceSpriteAccessor",
+    "SpaceLoadingScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

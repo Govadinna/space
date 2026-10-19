@@ -1,0 +1,69 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+repositories { mavenCentral() }
+
+base { archivesName = 'seamless-space' }
+
+loom {
+    splitEnvironmentSourceSets()
+    mods {
+        seamlessspace {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+fabricApi {
+    configureTests {
+        createSourceSet = true
+        modId = 'seamlessspace_test'
+        enableGameTests = true
+        enableClientGameTests = true
+        eula = false
+    }
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand version: project.version }
+}
+
+tasks.withType(JavaCompile).configureEach { options.release = 25 }
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+test { useJUnitPlatform() }
+
+tasks.register('compileShaderValidator', JavaCompile) {
+    source = files('tools/ValidateSpaceShader.java')
+    classpath = sourceSets.client.compileClasspath
+    destinationDirectory = layout.buildDirectory.dir('shader-validator')
+}
+
+tasks.register('validateSpaceShaders', JavaExec) {
+    dependsOn 'compileShaderValidator'
+    classpath = files(layout.buildDirectory.dir('shader-validator')) + sourceSets.client.runtimeClasspath
+    mainClass = 'ValidateSpaceShader'
+    jvmArgs '--enable-native-access=ALL-UNNAMED'
+    args fileTree('src/client/resources/assets/seamlessspace/shaders/core') {
+        include '*.fsh', '*.vsh'
+    }.files.sort().collect { it.absolutePath }
+}
+
+check.dependsOn 'validateSpaceShaders'
+
+jar { from('LICENSE') }
